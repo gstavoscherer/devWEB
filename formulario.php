@@ -1,3 +1,12 @@
+<?php
+    if(isset($_POST['submit'])){
+        include_once('config.php');
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        
+        $result = mysqli_query($conn,"INSERT INTO usuarios(email, senha) VALUES('$email', '$senha')");
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -10,8 +19,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <form method="POST" action="enviar.php">
+        <form method="POST" action="formulario.php">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -20,9 +28,8 @@
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
         </form>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
