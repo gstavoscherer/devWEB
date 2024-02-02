@@ -3,9 +3,19 @@
         include_once('config.php');
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        
-        $result = mysqli_query($conn,"INSERT INTO usuarios(email, senha) VALUES('$email', '$senha')");
+        $hashedPassword = password_hash($senha, PASSWORD_DEFAULT);
+        $conn = conectarBase();
+        $sql = "INSERT INTO `usuarios` (email, senha) VALUES ('$email', '$hashedPassword')";
+        $stmt = $conn->prepare($sql);
+    
+        try{
+            $stmt->execute();
+            echo "Sucesso";
+        } catch(PDOException $e) {
+            echo "Erro". $e->getMessage();
+        }
     }
+    
 ?>
 <!doctype html>
 <html lang="en">
