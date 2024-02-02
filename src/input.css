@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.minHmain{
+    min-height: 80vh;
+}
+.minHheader{
+    min-height: 12vh;
+}
+.minHfooter{
+    min-height: 8vh;
+}
